@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TENSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TENSEntidades" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ControlSignosVitales" EntityType="TENSModel.ControlSignosVitales" />
+    <EntitySet Name="DispositivoInvasor" EntityType="TENSModel.DispositivoInvasor" />
+    <EntitySet Name="ficha_paciente" EntityType="TENSModel.ficha_paciente" />
+    <EntitySet Name="Medicamento" EntityType="TENSModel.Medicamento" />
+    <EntitySet Name="Paciente" EntityType="TENSModel.Paciente" />
+    <EntitySet Name="Persona" EntityType="TENSModel.Persona" />
+    <EntitySet Name="Programacion_Aseo" EntityType="TENSModel.Programacion_Aseo" />
+    <EntitySet Name="TENS" EntityType="TENSModel.TENS" />
+    <AssociationSet Name="FK_ID_CSV" Association="TENSModel.FK_ID_CSV">
+      <End Role="ControlSignosVitales" EntitySet="ControlSignosVitales" />
+      <End Role="ficha_paciente" EntitySet="ficha_paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_paciente4" Association="TENSModel.FK_ID_paciente4">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="ControlSignosVitales" EntitySet="ControlSignosVitales" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dispositivo" Association="TENSModel.FK_dispositivo">
+      <End Role="DispositivoInvasor" EntitySet="DispositivoInvasor" />
+      <End Role="ficha_paciente" EntitySet="ficha_paciente" />
+    </AssociationSet>
+    <AssociationSet Name="PK_ID_paciente2" Association="TENSModel.PK_ID_paciente2">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="DispositivoInvasor" EntitySet="DispositivoInvasor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_Aseo" Association="TENSModel.FK_ID_Aseo">
+      <End Role="Programacion_Aseo" EntitySet="Programacion_Aseo" />
+      <End Role="ficha_paciente" EntitySet="ficha_paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_paciente5" Association="TENSModel.FK_ID_paciente5">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="ficha_paciente" EntitySet="ficha_paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_tens2" Association="TENSModel.FK_ID_tens2">
+      <End Role="TENS" EntitySet="TENS" />
+      <End Role="ficha_paciente" EntitySet="ficha_paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_medicamento" Association="TENSModel.FK_medicamento">
+      <End Role="Medicamento" EntitySet="Medicamento" />
+      <End Role="ficha_paciente" EntitySet="ficha_paciente" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_paciente1" Association="TENSModel.FK_ID_paciente1">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Medicamento" EntitySet="Medicamento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_paciente3" Association="TENSModel.FK_ID_paciente3">
+      <End Role="Paciente" EntitySet="Paciente" />
+      <End Role="Programacion_Aseo" EntitySet="Programacion_Aseo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ID_persona2" Association="TENSModel.FK_ID_persona2">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="Paciente" EntitySet="Paciente" />
+    </AssociationSet>
+    <AssociationSet Name="fk_ID_persona1" Association="TENSModel.fk_ID_persona1">
+      <End Role="Persona" EntitySet="Persona" />
+      <End Role="TENS" EntitySet="TENS" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ControlSignosVitales">
+    <Key>
+      <PropertyRef Name="ID_CSV" />
+    </Key>
+    <Property Name="ID_CSV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_paciente4" Type="Int32" />
+    <Property Name="frecuenciaRespiratoria" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="pam" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="presion_arterial_sistolica" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="presion_arterial_diastolica" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Fi02" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="umbral" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="SAT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ficha_paciente" Relationship="TENSModel.FK_ID_CSV" FromRole="ControlSignosVitales" ToRole="ficha_paciente" />
+    <NavigationProperty Name="Paciente" Relationship="TENSModel.FK_ID_paciente4" FromRole="ControlSignosVitales" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="DispositivoInvasor">
+    <Key>
+      <PropertyRef Name="ID_dispositivo" />
+    </Key>
+    <Property Name="ID_dispositivo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_paciente2" Type="Int32" />
+    <Property Name="nombre_dispositivo" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="proposito" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="area_tratada" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ficha_paciente" Relationship="TENSModel.FK_dispositivo" FromRole="DispositivoInvasor" ToRole="ficha_paciente" />
+    <NavigationProperty Name="Paciente" Relationship="TENSModel.PK_ID_paciente2" FromRole="DispositivoInvasor" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="ficha_paciente">
+    <Key>
+      <PropertyRef Name="ID_ficha" />
+    </Key>
+    <Property Name="ID_ficha" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_paciente5" Type="Int32" />
+    <Property Name="ID_tens2" Type="Int32" />
+    <Property Name="ID_dispositivo" Type="Int32" />
+    <Property Name="ID_medicamento" Type="Int32" />
+    <Property Name="ID_Aseo" Type="Int32" />
+    <Property Name="ID_CSV" Type="Int32" />
+    <Property Name="Examenes_pendientes" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="procedimientos_pendientes" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="fecha" Type="DateTime" Precision="0" Nullable="true" />
+    <NavigationProperty Name="ControlSignosVitales" Relationship="TENSModel.FK_ID_CSV" FromRole="ficha_paciente" ToRole="ControlSignosVitales" />
+    <NavigationProperty Name="DispositivoInvasor" Relationship="TENSModel.FK_dispositivo" FromRole="ficha_paciente" ToRole="DispositivoInvasor" />
+    <NavigationProperty Name="Programacion_Aseo" Relationship="TENSModel.FK_ID_Aseo" FromRole="ficha_paciente" ToRole="Programacion_Aseo" />
+    <NavigationProperty Name="Paciente" Relationship="TENSModel.FK_ID_paciente5" FromRole="ficha_paciente" ToRole="Paciente" />
+    <NavigationProperty Name="TENS" Relationship="TENSModel.FK_ID_tens2" FromRole="ficha_paciente" ToRole="TENS" />
+    <NavigationProperty Name="Medicamento" Relationship="TENSModel.FK_medicamento" FromRole="ficha_paciente" ToRole="Medicamento" />
+  </EntityType>
+  <EntityType Name="Medicamento">
+    <Key>
+      <PropertyRef Name="ID_medicamento" />
+    </Key>
+    <Property Name="ID_medicamento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_paciente1" Type="Int32" />
+    <Property Name="cantidad" Type="Int32" />
+    <Property Name="nombre_medicamento" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="clasificacion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ficha_paciente" Relationship="TENSModel.FK_medicamento" FromRole="Medicamento" ToRole="ficha_paciente" />
+    <NavigationProperty Name="Paciente" Relationship="TENSModel.FK_ID_paciente1" FromRole="Medicamento" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="Paciente">
+    <Key>
+      <PropertyRef Name="ID_paciente" />
+    </Key>
+    <Property Name="ID_paciente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_persona2" Type="Int32" />
+    <Property Name="enfermedad" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="antecedentes" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="peso" Type="Int32" />
+    <Property Name="alergias" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="prescripcion" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ControlSignosVitales" Relationship="TENSModel.FK_ID_paciente4" FromRole="Paciente" ToRole="ControlSignosVitales" />
+    <NavigationProperty Name="DispositivoInvasor" Relationship="TENSModel.PK_ID_paciente2" FromRole="Paciente" ToRole="DispositivoInvasor" />
+    <NavigationProperty Name="ficha_paciente" Relationship="TENSModel.FK_ID_paciente5" FromRole="Paciente" ToRole="ficha_paciente" />
+    <NavigationProperty Name="Medicamento" Relationship="TENSModel.FK_ID_paciente1" FromRole="Paciente" ToRole="Medicamento" />
+    <NavigationProperty Name="Programacion_Aseo" Relationship="TENSModel.FK_ID_paciente3" FromRole="Paciente" ToRole="Programacion_Aseo" />
+    <NavigationProperty Name="Persona" Relationship="TENSModel.FK_ID_persona2" FromRole="Paciente" ToRole="Persona" />
+  </EntityType>
+  <EntityType Name="Persona">
+    <Key>
+      <PropertyRef Name="ID_persona" />
+    </Key>
+    <Property Name="ID_persona" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nombre" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="apellido_paterno" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="apellido_materno" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="genero" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Paciente" Relationship="TENSModel.FK_ID_persona2" FromRole="Persona" ToRole="Paciente" />
+    <NavigationProperty Name="TENS" Relationship="TENSModel.fk_ID_persona1" FromRole="Persona" ToRole="TENS" />
+  </EntityType>
+  <EntityType Name="Programacion_Aseo">
+    <Key>
+      <PropertyRef Name="ID_Aseo" />
+    </Key>
+    <Property Name="ID_Aseo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_paciente3" Type="Int32" />
+    <Property Name="Tiempo_Aseo_cavidades" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Hora_Baño_cama" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="hora_ducha" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Tiempo_Aseo_Genital" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Tiempo_lavado_cabello" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ficha_paciente" Relationship="TENSModel.FK_ID_Aseo" FromRole="Programacion_Aseo" ToRole="ficha_paciente" />
+    <NavigationProperty Name="Paciente" Relationship="TENSModel.FK_ID_paciente3" FromRole="Programacion_Aseo" ToRole="Paciente" />
+  </EntityType>
+  <EntityType Name="TENS">
+    <Key>
+      <PropertyRef Name="ID_tens" />
+    </Key>
+    <Property Name="ID_tens" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_persona1" Type="Int32" />
+    <Property Name="contrasena" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ficha_paciente" Relationship="TENSModel.FK_ID_tens2" FromRole="TENS" ToRole="ficha_paciente" />
+    <NavigationProperty Name="Persona" Relationship="TENSModel.fk_ID_persona1" FromRole="TENS" ToRole="Persona" />
+  </EntityType>
+  <Association Name="FK_ID_CSV">
+    <End Type="TENSModel.ControlSignosVitales" Role="ControlSignosVitales" Multiplicity="0..1" />
+    <End Type="TENSModel.ficha_paciente" Role="ficha_paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ControlSignosVitales">
+        <PropertyRef Name="ID_CSV" />
+      </Principal>
+      <Dependent Role="ficha_paciente">
+        <PropertyRef Name="ID_CSV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_paciente4">
+    <End Type="TENSModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+    <End Type="TENSModel.ControlSignosVitales" Role="ControlSignosVitales" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="ID_paciente" />
+      </Principal>
+      <Dependent Role="ControlSignosVitales">
+        <PropertyRef Name="ID_paciente4" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dispositivo">
+    <End Type="TENSModel.DispositivoInvasor" Role="DispositivoInvasor" Multiplicity="0..1" />
+    <End Type="TENSModel.ficha_paciente" Role="ficha_paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DispositivoInvasor">
+        <PropertyRef Name="ID_dispositivo" />
+      </Principal>
+      <Dependent Role="ficha_paciente">
+        <PropertyRef Name="ID_dispositivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PK_ID_paciente2">
+    <End Type="TENSModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+    <End Type="TENSModel.DispositivoInvasor" Role="DispositivoInvasor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="ID_paciente" />
+      </Principal>
+      <Dependent Role="DispositivoInvasor">
+        <PropertyRef Name="ID_paciente2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_Aseo">
+    <End Type="TENSModel.Programacion_Aseo" Role="Programacion_Aseo" Multiplicity="0..1" />
+    <End Type="TENSModel.ficha_paciente" Role="ficha_paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Programacion_Aseo">
+        <PropertyRef Name="ID_Aseo" />
+      </Principal>
+      <Dependent Role="ficha_paciente">
+        <PropertyRef Name="ID_Aseo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_paciente5">
+    <End Type="TENSModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+    <End Type="TENSModel.ficha_paciente" Role="ficha_paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="ID_paciente" />
+      </Principal>
+      <Dependent Role="ficha_paciente">
+        <PropertyRef Name="ID_paciente5" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_tens2">
+    <End Type="TENSModel.TENS" Role="TENS" Multiplicity="0..1" />
+    <End Type="TENSModel.ficha_paciente" Role="ficha_paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TENS">
+        <PropertyRef Name="ID_tens" />
+      </Principal>
+      <Dependent Role="ficha_paciente">
+        <PropertyRef Name="ID_tens2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_medicamento">
+    <End Type="TENSModel.Medicamento" Role="Medicamento" Multiplicity="0..1" />
+    <End Type="TENSModel.ficha_paciente" Role="ficha_paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Medicamento">
+        <PropertyRef Name="ID_medicamento" />
+      </Principal>
+      <Dependent Role="ficha_paciente">
+        <PropertyRef Name="ID_medicamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_paciente1">
+    <End Type="TENSModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+    <End Type="TENSModel.Medicamento" Role="Medicamento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="ID_paciente" />
+      </Principal>
+      <Dependent Role="Medicamento">
+        <PropertyRef Name="ID_paciente1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_paciente3">
+    <End Type="TENSModel.Paciente" Role="Paciente" Multiplicity="0..1" />
+    <End Type="TENSModel.Programacion_Aseo" Role="Programacion_Aseo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paciente">
+        <PropertyRef Name="ID_paciente" />
+      </Principal>
+      <Dependent Role="Programacion_Aseo">
+        <PropertyRef Name="ID_paciente3" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ID_persona2">
+    <End Type="TENSModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="TENSModel.Paciente" Role="Paciente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="ID_persona" />
+      </Principal>
+      <Dependent Role="Paciente">
+        <PropertyRef Name="ID_persona2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_ID_persona1">
+    <End Type="TENSModel.Persona" Role="Persona" Multiplicity="0..1" />
+    <End Type="TENSModel.TENS" Role="TENS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Persona">
+        <PropertyRef Name="ID_persona" />
+      </Principal>
+      <Dependent Role="TENS">
+        <PropertyRef Name="ID_persona1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="057842a5b31743079994e797c01bdb8b" Name="Diagram1" ZoomLevel="78">
+        <EntityTypeShape EntityType="TENSModel.ControlSignosVitales" Width="1.5" PointX="5.125" PointY="8.625" />
+        <EntityTypeShape EntityType="TENSModel.DispositivoInvasor" Width="1.5" PointX="5.125" PointY="12" />
+        <EntityTypeShape EntityType="TENSModel.ficha_paciente" Width="1.5" PointX="7.5" PointY="7.875" />
+        <EntityTypeShape EntityType="TENSModel.Medicamento" Width="1.5" PointX="5.25" PointY="2.875" />
+        <EntityTypeShape EntityType="TENSModel.Paciente" Width="1.5" PointX="3" PointY="6.75" />
+        <EntityTypeShape EntityType="TENSModel.Persona" Width="1.5" PointX="0.75" PointY="8.5" />
+        <EntityTypeShape EntityType="TENSModel.Programacion_Aseo" Width="1.5" PointX="5.25" PointY="5.625" />
+        <EntityTypeShape EntityType="TENSModel.TENS" Width="1.5" PointX="2.625" PointY="13.5" IsExpanded="true" />
+        <AssociationConnector Association="TENSModel.FK_ID_CSV" />
+        <AssociationConnector Association="TENSModel.FK_ID_paciente4" />
+        <AssociationConnector Association="TENSModel.FK_dispositivo" />
+        <AssociationConnector Association="TENSModel.PK_ID_paciente2" />
+        <AssociationConnector Association="TENSModel.FK_ID_Aseo" />
+        <AssociationConnector Association="TENSModel.FK_ID_paciente5" />
+        <AssociationConnector Association="TENSModel.FK_ID_tens2" />
+        <AssociationConnector Association="TENSModel.FK_medicamento" />
+        <AssociationConnector Association="TENSModel.FK_ID_paciente1" />
+        <AssociationConnector Association="TENSModel.FK_ID_paciente3" />
+        <AssociationConnector Association="TENSModel.FK_ID_persona2" />
+        <AssociationConnector Association="TENSModel.fk_ID_persona1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
